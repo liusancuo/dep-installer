@@ -2,6 +2,7 @@ const childProcess = require('child_process');
 const DependencyInstaller = require('../base');
 const fs = require('fs');
 const path = require('path');
+const { addDivider } = require('../util');
 
 const RC_FILE_NAME = '.prettierrc';
 
@@ -11,7 +12,9 @@ class PrettierInstaller extends DependencyInstaller {
   }
 
   run() {
+    addDivider(`Install ${this.name}`);
     this.install();
+    addDivider(`Generate ${RC_FILE_NAME}`);
     this.generateRC();
   }
 
@@ -27,19 +30,14 @@ class PrettierInstaller extends DependencyInstaller {
   }
 
   generateRC() {
-    const rcFilePath = path.join(process.cwd(), RC_FILE_NAME);
-
-    if (fs.existsSync(rcFilePath)) {
-      console.log(`The ${RC_FILE_NAME} is existed, skip the file creation.`);
-      return;
-    }
-
     const source = path.join(__dirname, 'rc.json');
 
-    fs.copyFileSync(source, rcFilePath);
-
-    console.log(`${RC_FILE_NAME} is created in the root path.`);
+    super.generateRC(process.cwd(), RC_FILE_NAME, source);
   }
+
+  // generateIgnore() {
+  //   fs.openSync(`${process.cwd()}/.prettierignore`, 'w');
+  // }
 }
 
 module.exports = new PrettierInstaller('prettier', '^3.3.1');
