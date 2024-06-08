@@ -1,17 +1,23 @@
 {
-  "name": "dep-installer",
-  "version": "1.0.0",
+  "name": "self-use-dep-installer",
+  "version": "0.0.1",
   "description": "To install dependencies required for initiating a new project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "depI": "./cli.js"
+    "dep-ins": "./cli.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "files": [
+    "README.md",
+    "package.json",
+    "cli.js",
+    "src/"
+  ],
   "devDependencies": {
     "prettier": "^3.3.1"
   }

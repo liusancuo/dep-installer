@@ -34,10 +34,6 @@ class PrettierInstaller extends DependencyInstaller {
 
     super.generateRC(process.cwd(), RC_FILE_NAME, source);
   }
-
-  // generateIgnore() {
-  //   fs.openSync(`${process.cwd()}/.prettierignore`, 'w');
-  // }
 }
 
 module.exports = new PrettierInstaller('prettier', '^3.3.1');
